@@ -1,0 +1,3 @@
+vyzeai==0.0.21
+streamlit
+pandas
