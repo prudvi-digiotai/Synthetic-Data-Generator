@@ -24,10 +24,18 @@ def generate_synthetic_data(api_key, file_path, num_rows=10, chunk_size=30):
             current_sample_str = sample_str
 
         rows_to_generate = min(chunk_size, num_rows - rows_generated)
-        
-        prompt = (f"Generate {rows_to_generate} more rows of synthetic data following this pattern:\n\n{current_sample_str}\n"
-                  "\nEnsure the synthetic data does not contain column names or old data. "
-                  "\nExpected Output: synthetic data as comma-separated values (',').")
+
+        prompt = (
+              f"Generate {rows_to_generate} additional rows of synthetic data that closely follow the structure, distribution, and patterns seen in the existing data sample:\n\n{current_sample_str}\n"
+              "\nEnsure the new rows are realistic, varied, and aligned with the trends of the original data. Avoid repeating or duplicating the current data. "
+              "\nDo not include column names or any old data. Format the output as comma-separated values (','). "
+              "\nStrictly maintain consistency in data types and logical relationships between the fields. "
+              "\nExpected Output: synthetic data as comma-separated values (','). "
+        )
+
+        # prompt = (f"Generate {rows_to_generate} more rows of synthetic data following this pattern:\n\n{current_sample_str}\n"
+        #           "\nEnsure the synthetic data does not contain column names or old data. "
+        #           "\nExpected Output: synthetic data as comma-separated values (',').")
         #                  "\nFor dates and time, maintain sequence. "
 
         generated_data = llm.run(prompt, system_message=sysp)
