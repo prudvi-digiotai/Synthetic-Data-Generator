@@ -28,7 +28,7 @@ def generate_synthetic_data(api_key, file_path, num_rows=10, chunk_size=30):
         prompt = (
             f"Generate {rows_to_generate} additional rows of synthetic data that adhere to the structure, distribution, and observed patterns in the provided data sample:\n\n{current_sample_str}\n"
           "\nKey patterns to maintain include: temperature values gradually increasing, dates progressing sequentially, and any other noticeable trends. "
-          "Ensure that the new rows fit within the overall distribution and variability of the original data (e.g., temperature changes should be in a certain range and realistic, other numerical values should stay within their typical ranges)."
+          "Ensure that the new rows fit within the overall distribution and variability of the original data. "
           "Ensure no column names or old data appear in the output. Format the output as comma-separated values (',')."
           "\nMaintain strict consistency in data types, logical relationships, and dependencies between fields. For instance, any date or time-based values should align with related fields (e.g., sequential events or timestamps)."
           "\nThe new data should be realistic and non-repetitive, ensuring it expands the existing dataset with natural variations while respecting the original data's structure."
