@@ -25,14 +25,19 @@ def generate_synthetic_data(api_key, file_path, num_rows=10, chunk_size=30):
 
         rows_to_generate = min(chunk_size, num_rows - rows_generated)
 
-        prompt = (
-            f"Generate {rows_to_generate} additional rows of synthetic data that adhere to the structure, distribution, and observed patterns in the provided data sample:\n\n{current_sample_str}\n"
-          "\nKey patterns to maintain include: temperature values gradually increasing, dates progressing sequentially, and any other noticeable trends. "
-          "Ensure that the new rows fit within the overall distribution and variability of the original data. "
-          "Ensure no column names or old data appear in the output. Format the output as comma-separated values (',')."
-          "\nMaintain strict consistency in data types, logical relationships, and dependencies between fields. For instance, any date or time-based values should align with related fields (e.g., sequential events or timestamps)."
-          "\nThe new data should be realistic and non-repetitive, ensuring it expands the existing dataset with natural variations while respecting the original data's structure."
-        )
+        # prompt = (
+        #     f"Generate {rows_to_generate} additional rows of synthetic data that adhere to the structure, distribution, and observed patterns in the provided data sample:\n\n{current_sample_str}\n"
+        #   "\nKey patterns to maintain include: temperature values gradually increasing, dates progressing sequentially, and any other noticeable trends. "
+        #   "Ensure that the new rows fit within the overall distribution and variability of the original data. "
+        #   "Ensure no column names or old data appear in the output. Format the output as comma-separated values (',')."
+        #   "\nMaintain strict consistency in data types, logical relationships, and dependencies between fields. For instance, any date or time-based values should align with related fields (e.g., sequential events or timestamps)."
+        #   "\nThe new data should be realistic and non-repetitive, ensuring it expands the existing dataset with natural variations while respecting the original data's structure."
+        # )
+
+        prompt = (f"Generate {rows_to_generate} additional rows of synthetic data that closely follow the structure, distribution, and patterns seen in the existing data sample:\n\n{current_sample_str}\n"
+          "\nEnsure the new rows are realistic, varied, and aligned with the trends of the original data. Avoid repeating or duplicating the current data. "
+          "Do not include column names or any old data. Format the output as comma-separated values (',')."
+          "\nStrictly maintain consistency in data types and logical relationships between the fields.")
 
 
         # prompt = (f"Generate {rows_to_generate} more rows of synthetic data following this pattern:\n\n{current_sample_str}\n"
