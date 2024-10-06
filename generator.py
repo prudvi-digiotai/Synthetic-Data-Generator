@@ -3,12 +3,12 @@
 import pandas as pd
 from vyzeai.models.openai import ChatOpenAI
 
-def generate_synthetic_data(api_key, file_path, num_rows=10, chunk_size=30):
+def generate_synthetic_data(api_key, file_path, num_rows=10, chunk_size=50):
     """Generate synthetic data."""
     
     llm = ChatOpenAI(api_key)
     
-    data = pd.read_excel(file_path).tail(30)
+    data = pd.read_excel(file_path).tail(50)
     sample_str = data.to_csv(index=False, header=False)
     
     sysp = "You are a synthetic data generator. Your output should only be CSV format without any additional text and code fences."
@@ -19,7 +19,7 @@ def generate_synthetic_data(api_key, file_path, num_rows=10, chunk_size=30):
     while rows_generated < num_rows:
 
         if generated_rows:
-            current_sample_str = "\n".join([",".join(row) for row in generated_rows[-30:]])
+            current_sample_str = "\n".join([",".join(row) for row in generated_rows[-50:]])
         else:
             current_sample_str = sample_str
 
