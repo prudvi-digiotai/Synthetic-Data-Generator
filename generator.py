@@ -3,7 +3,7 @@
 import pandas as pd
 from vyzeai.models.openai import ChatOpenAI
 
-def generate_synthetic_data(api_key, file_path, num_rows=10, chunk_size=50):
+def generate_synthetic_data(api_key, file_path, num_rows=10, chunk_size=30):
     """Generate synthetic data."""
     
     llm = ChatOpenAI(api_key)
@@ -19,7 +19,7 @@ def generate_synthetic_data(api_key, file_path, num_rows=10, chunk_size=50):
     while rows_generated < num_rows:
 
         if generated_rows:
-            current_sample_str = "\n".join([",".join(row) for row in generated_rows[-10:]])
+            current_sample_str = "\n".join([",".join(row) for row in generated_rows[-30:]])
         else:
             current_sample_str = sample_str
 
