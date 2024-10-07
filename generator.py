@@ -34,10 +34,15 @@ def generate_synthetic_data(api_key, file_path, num_rows=10, chunk_size=30):
         #   "\nThe new data should be realistic and non-repetitive, ensuring it expands the existing dataset with natural variations while respecting the original data's structure."
         # )
 
+        # prompt = (f"Generate {rows_to_generate} additional rows of synthetic data that closely follow the structure, distribution, and patterns seen in the existing data sample:\n\n{current_sample_str}\n"
+        #   "\nEnsure the new rows are realistic, varied, and aligned with the trends of the original data. Avoid repeating or duplicating the current data. "
+        #   "Do not include column names or any old data. Format the output as comma-separated values (',')."
+        #   "\nStrictly maintain consistency in data types and logical relationships between the fields.")
+
         prompt = (f"Generate {rows_to_generate} additional rows of synthetic data that closely follow the structure, distribution, and patterns seen in the existing data sample:\n\n{current_sample_str}\n"
-          "\nEnsure the new rows are realistic, varied, and aligned with the trends of the original data. Avoid repeating or duplicating the current data. "
+          "\nEnsure the new rows are realistic, varied, and maintain the same statistical distribution, trends, and relationships as the original data. Avoid repeating or duplicating the current data. "
           "Do not include column names or any old data. Format the output as comma-separated values (',')."
-          "\nStrictly maintain consistency in data types and logical relationships between the fields.")
+          "\nStrictly maintain consistency in data types, logical relationships between the fields, and the overall distribution of values.")
 
 
         # prompt = (f"Generate {rows_to_generate} more rows of synthetic data following this pattern:\n\n{current_sample_str}\n"
