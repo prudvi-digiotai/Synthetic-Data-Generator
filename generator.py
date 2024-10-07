@@ -39,10 +39,15 @@ def generate_synthetic_data(api_key, file_path, num_rows=10, chunk_size=30):
         #   "Do not include column names or any old data. Format the output as comma-separated values (',')."
         #   "\nStrictly maintain consistency in data types and logical relationships between the fields.")
 
-        prompt = (f"Generate {rows_to_generate} additional rows of synthetic data that closely follow the structure, distribution, and patterns seen in the existing data sample:\n\n{current_sample_str}\n"
-          "\nEnsure the new rows are realistic, varied, and maintain the same statistical distribution, trends, and relationships as the original data. Avoid repeating or duplicating the current data. "
-          "Do not include column names or any old data. Format the output as comma-separated values (',')."
-          "\nStrictly maintain consistency in data types, logical relationships between the fields, and the overall distribution of values.")
+        # prompt = (f"Generate {rows_to_generate} additional rows of synthetic data that closely follow the structure, distribution, and patterns seen in the existing data sample:\n\n{current_sample_str}\n"
+        #   "\nEnsure the new rows are realistic, varied, and maintain the same statistical distribution, trends, and relationships as the original data. Avoid repeating or duplicating the current data. "
+        #   "Do not include column names or any old data. Format the output as comma-separated values (',')."
+        #   "\nStrictly maintain consistency in data types, logical relationships between the fields, and the overall distribution of values.")
+
+        prompt = (f"Generate {rows_to_generate} rows of synthetic data based on the structure and distribution of the following sample:\n\n{current_sample_str}\n"
+          "\nEnsure the new rows are realistic, varied, and maintain the same data types, distribution, and logical relationships. "
+          "Format as comma-separated values (',') without including column names or old data.")
+
 
 
         # prompt = (f"Generate {rows_to_generate} more rows of synthetic data following this pattern:\n\n{current_sample_str}\n"
